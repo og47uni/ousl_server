@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Add this line at the very top
 
 const app = express();
 const PORT = 3000;
+app.use(cors());
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://missari:missari123@cluster0.2uqs2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
